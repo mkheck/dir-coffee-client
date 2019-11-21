@@ -67,7 +67,7 @@ class ClientController {
 
     @GetMapping(value = "/orders/{coffeename}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     Flux<CoffeeOrder> ordersForCoffee(@PathVariable String coffeename) {
-        return requester.route("orders.".concat(coffeename)).retrieveFlux(CoffeeOrder.class);
+        return requester.route("orders.{coffeename}", coffeename).retrieveFlux(CoffeeOrder.class);
     }
 }
 
